@@ -37,12 +37,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             throw new UsernameNotFoundException("用户并不存在");
         }
 
-        UserDetails buildUser = org.springframework.security.core.userdetails.User.builder()
+        return org.springframework.security.core.userdetails.User.builder()
                 .username(username)
                 .password(getUser.getPassword())
                 .authorities(new ArrayList<>())
                 .build();
-        return buildUser;
     }
 }
 
