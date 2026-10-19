@@ -1,0 +1,1 @@
+create database security_db_2026 character set utf8mb4;
