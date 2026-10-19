@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>01-beginner</module>
+        <module>02-db-login</module>
     </modules>
 
     <properties>
@@ -26,6 +27,16 @@
                 <version>3.5.8</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.33</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.5.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
