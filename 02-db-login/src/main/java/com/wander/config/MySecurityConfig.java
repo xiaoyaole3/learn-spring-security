@@ -38,6 +38,7 @@ public class MySecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login").permitAll()
+                        .requestMatchers("/captcha/get").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

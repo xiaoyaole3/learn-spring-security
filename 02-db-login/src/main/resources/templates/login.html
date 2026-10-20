@@ -24,7 +24,23 @@
             <input type="checkbox" name="remember-me"> 记住我
         </label>
     </div>
+
+    <div class="login-item">
+        <label for="captchaCode">验证码</label>
+        <input type="text" id="captchaCode" name="captchaCode" required placeholder="请输入验证码" style="width: 120px">
+        <img id="captchaImg" src="/captcha/get" title="点击刷新验证码" onclick="refreshCaptcha()">
+    </div>
+
     <button type="submit">登录</button>
 </form>
 </body>
+
+<script>
+    // 刷新验证码
+    function refreshCaptcha() {
+        let captcha = document.getElementById('captchaCode');
+        // 加载时间戳参数，防止缓存导致图片不刷新
+        captcha.src = '/captcha/get?timestamp=' + new Date().getTime();
+    }
+</script>
 </html>
