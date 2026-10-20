@@ -35,6 +35,7 @@ public class CaptchaController {
 //        lineCaptcha.verify("1234");
 
         HttpSession session = request.getSession();
+        // 将验证码保存到session中，用于后续对比使用
         session.setAttribute("captcha", lineCaptcha.getCode());
 
         // 设置响应头，禁止缓存，防止验证码重复展示

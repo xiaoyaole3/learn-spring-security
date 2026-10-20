@@ -1,5 +1,6 @@
 package com.wander.config;
 
+import com.wander.filter.CaptchaValidatorFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
@@ -21,6 +23,8 @@ public class MySecurityConfig {
 
     @Autowired
     private DataSource dataSource;
+    @Autowired
+    private CaptchaValidatorFilter captchaValidatorFilter;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -60,6 +64,12 @@ public class MySecurityConfig {
                         .logoutSuccessUrl("/login?logout")
                         .permitAll()
                 );
+
+        // 过滤器里面只有默认的用户名和密码校验，
+        // 现在我们希望添加我们个人的过滤器在过滤链中
+        // 添加我们的验证码过滤器在用户名密码验证之前
+        http.addFilterBefore(captchaValidatorFilter, UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
 
