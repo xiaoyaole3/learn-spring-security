@@ -37,11 +37,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
             throw new UsernameNotFoundException("用户并不存在");
         }
 
-        return org.springframework.security.core.userdetails.User.builder()
-                .username(username)
-                .password(getUser.getPassword())
-                .authorities(new ArrayList<>())
-                .build();
+        // 返回原本的SpringSecurity提供的User对象
+//        return org.springframework.security.core.userdetails.User.builder()
+//                .username(username)
+//                .password(getUser.getPassword())
+//                .authorities(new ArrayList<>())
+//                .build();
+        // 在我们的自定义User实现了UserDetails接口之后，可以直接返回我们的User对喜爱给你
+        return getUser;
     }
 }
 
