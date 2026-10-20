@@ -33,9 +33,12 @@ public class MySecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
+                        // 设置默认的登录页面
+                        // 也就是退出后默认的页面
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/", true)
+//                        .passwordParameter("password") // 前端设置自定义的参数名称
                         .permitAll()
                 )
                 .logout(logout -> logout
