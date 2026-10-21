@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.wander.entity.SysPermission;
 import com.wander.service.SysPermissionService;
 import com.wander.mapper.SysPermissionMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
 * @author wander
@@ -15,6 +18,14 @@ import org.springframework.stereotype.Service;
 public class SysPermissionServiceImpl extends ServiceImpl<SysPermissionMapper, SysPermission>
     implements SysPermissionService{
 
+    @Autowired
+    private SysPermissionMapper sysPermissionMapper;
+
+
+    @Override
+    public List<String> listPermissionByUserId(Long userId) {
+        return sysPermissionMapper.listPermissionByUserId(userId);
+    }
 }
 
 

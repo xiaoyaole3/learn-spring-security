@@ -3,6 +3,8 @@ package com.wander.service;
 import com.wander.entity.SysPermission;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
 * @author wander
 * @description 针对表【sys_permission】的数据库操作Service
@@ -10,4 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface SysPermissionService extends IService<SysPermission> {
 
+    List<String> listPermissionByUserId(Long userId);
 }

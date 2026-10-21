@@ -15,4 +15,15 @@
     <sql id="Base_Column_List">
         id,perm_name,perm_code,resource_type,resource_path
     </sql>
+    <select id="listPermissionByUserId" resultType="java.lang.String">
+        select sp.perm_code
+        from sys_permission sp
+        inner join sys_role_permission srp on sp.id = srp.perm_id
+        inner join sys_role sr on sr.id = srp.role_id
+        inner join sys_user_role sur on sur.role_id = sr.id
+        inner join sys_user su on sur.user_id = su.id
+        <where>
+            su.id = #{userId}
+        </where>
+    </select>
 </mapper>

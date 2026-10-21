@@ -2,6 +2,10 @@ package com.wander.mapper;
 
 import com.wander.entity.SysPermission;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
 * @author wander
@@ -9,8 +13,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2026-10-21 22:36:24
 * @Entity com.wander.entity.SysPermission
 */
+@Mapper
 public interface SysPermissionMapper extends BaseMapper<SysPermission> {
 
+    List<String> listPermissionByUserId(@Param("userId") Long userId);
 }
 
 
