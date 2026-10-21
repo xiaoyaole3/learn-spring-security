@@ -11,6 +11,7 @@
     <modules>
         <module>01-beginner</module>
         <module>02-db-login</module>
+        <module>03-rbac</module>
     </modules>
 
     <properties>
